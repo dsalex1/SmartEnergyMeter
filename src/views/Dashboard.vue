@@ -153,9 +153,11 @@ let plotDifferenceData = computed(() => ({
   y: meterData.value
     .map(
       (d, i, arr) =>
-        ((parseFloat((arr[i + 1] || [])[1] - parseFloat(d[1])) * 1000) /
+        (parseFloat((arr[i + 1] || [])[1] - parseFloat(d[1])) /
           ((arr[i + 1] || [])[0] - d[0])) *
-        1000
+        1000 *
+        60 *
+        60
     )
     .slice(0, -1),
   type: "scatter",
